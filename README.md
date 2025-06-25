@@ -1,16 +1,40 @@
-# expense_tracker
+# Expense Tracker App
 
-A new Flutter project.
+A simple and intuitive expense tracker app to help you manage your finances, track spending, and stay on top of your financial goals.
 
-## Getting Started
+## 🚀 Features
 
-This project is a starting point for a Flutter application.
+- 💸 Add and categorize expenses easily
+- 📊 View spending reports and analytics
+- 🏦 Set monthly budgets and monitor progress
+- 🔔 Get notifications for budget limits
+- 🔒 Secure and private — your data is safe
+- 🌙 Light and dark modes
+- 🔗 Sync across devices (optional, if supported)
 
-A few resources to get you started if this is your first Flutter project:
+## 📱 Screenshots
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+*(Add screenshots here to showcase your app)*
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠️ Tech Stack
+
+- **Frontend:** Flutter
+- **Backend:** Laravel
+- **Database:** MySQL
+- **Authentication:** JWT / OAuth (if applicable)
+- **Deployment:** Docker / AWS / Vercel / Render / (your choice)
+
+## 🔧 Installation
+
+### Backend Setup
+
+```bash
+git clone https://github.com/your-username/expense-tracker.git
+cd expense-tracker/backend
+cp .env.example .env
+# Configure your environment variables
+
+composer install
+php artisan migrate
+php artisan serve
+```
