@@ -29,7 +29,7 @@ A simple and intuitive expense tracker app to help you manage your finances, tra
 ### Backend Setup
 
 ```bash
-git clone https://github.com/your-username/expense-tracker.git
+git clone https://github.com/aceMediaDigital/expense_tracker.git
 cd expense-tracker/backend
 cp .env.example .env
 # Configure your environment variables
