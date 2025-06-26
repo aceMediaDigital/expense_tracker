@@ -73,11 +73,53 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf
+        - asset: assets/fonts/Inter-VariableFont_opsz,wght.ttf
+        - asset: assets/fonts/Inter_18pt-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Inter_18pt-BlackItalic.ttf
+          weight: 900
+          style: italic
+        - asset: assets/fonts/Inter_18pt-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Inter_18pt-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Inter_18pt-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Inter_18pt-ExtraBold.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/Inter_18pt-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Inter_18pt-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/Inter_18pt-Italic.ttf
+        - asset: assets/fonts/Inter_18pt-Light.ttf
+        - asset: assets/fonts/Inter_18pt-LightItalic.ttf
+          style: italic
+        - asset: assets/fonts/Inter_18pt-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter_18pt-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Inter_18pt-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter_18pt-SemiBold.ttf
+          weight: 500
+        - asset: assets/fonts/Inter_18pt-SemiBoldItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Inter_18pt-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Inter_18pt-ThinItalic.ttf
+          weight: 100
+          style: italic
+
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
