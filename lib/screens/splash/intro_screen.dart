@@ -7,6 +7,7 @@
  * =======================================================
  */
 
+import 'dart:async';
 import 'package:flutter/material.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -31,6 +32,15 @@ class _IntroScreenState extends State<IntroScreen> {
   @override
   void initState() {
     super.initState();
+    Timer(const Duration(seconds: 5), () {
+      if (_controller.hasClients) {
+        _controller.animateToPage(
+          1,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+        );
+      }
+    });
   }
 
   @override
@@ -70,20 +80,21 @@ class _IntroScreenState extends State<IntroScreen> {
                       child: Stack(
                         children: <Widget>[
                           Positioned(
-                              top: 130, left: 48,
+                              top: 120, left: 48,
                               child: Image.asset('assets/images/coin.png')
                           ),
 
                           Positioned(
-                            right: 16, top: screen.height * 0.2,
+                            right: 30, top: screen.height * 0.2,
                               child: Image.asset('assets/images/donut.png')
                           ),
-                          /*Positioned(
-                            child: SvgPicture.asset(
-                              width: screen.width, height: 300,
-                              'assets/images/svg/mascot.svg',
+                          Positioned(
+                            top: 120,
+                            child: Image.asset(
+                              //width: screen.width, height: 300,
+                              'assets/images/moneyman.png',
                             ),
-                          ),*/
+                          ),
                         ],
                       ),
                     ),
@@ -137,7 +148,6 @@ class _IntroScreenState extends State<IntroScreen> {
                             style: TextStyle(fontSize: 14, color: Color(0xFF444444),),
                           ),
                           Spacer()
-
                         ],
                       ),
                     )
