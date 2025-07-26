@@ -1,0 +1,442 @@
+[
+  {
+    "description": "Alcohol",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "5e4bad9f62bab23e8c4ca6d8"
+  },
+  {
+    "description": "Bank Charges & Fees",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000023"
+  },
+  {
+    "description": "Books & Stationery",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "5e4badc462bab23e8c4ca6db"
+  },
+  {
+    "description": "Business",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000001"
+  },
+  {
+    "description": "Card Repayments",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000032"
+  },
+  {
+    "description": "Cash",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000002"
+  },
+  {
+    "description": "Cellphone",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000025"
+  },
+  {
+    "description": "Children",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000008"
+  },
+  {
+    "description": "Cigarettes",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "5e4bada962bab23e8c4ca6d9"
+  },
+  {
+    "description": "Clothing",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000009"
+  },
+  {
+    "description": "Coffee",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "5dc4026b5cfd7a458ca1f0f6"
+  },
+  {
+    "description": "Dividends",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "62208880a922264e917a3797"
+  },
+  {
+    "description": "Donations",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000006"
+  },
+  {
+    "description": "Eating Out & Takeaways",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000022"
+  },
+  {
+    "description": "Education",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd9082800000b"
+  },
+  {
+    "description": "Entertainment",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd9082800000d"
+  },
+  {
+    "description": "Friends & Family",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "5e4badd462bab23e8c4ca6dc"
+  },
+  {
+    "description": "General Purchases",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd9082800000f"
+  },
+  {
+    "description": "Gifts",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000010"
+  },
+  {
+    "description": "Groceries",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000011"
+  },
+  {
+    "description": "Hobbies",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "5eea181fcea72b1390370619"
+  },
+  {
+    "description": "Holidays & Travel",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000026"
+  },
+  {
+    "description": "Home & Garden",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000014"
+  },
+  {
+    "description": "Home Loans",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000018"
+  },
+  {
+    "description": "Home Utility & Service",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000027"
+  },
+  {
+    "description": "Housekeeping",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "5e4baddd62bab23e8c4ca6dd"
+  },
+  {
+    "description": "Insurance",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000016"
+  },
+  {
+    "description": "Interest",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd9082800002b"
+  },
+  {
+    "description": "Investments",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000033"
+  },
+  {
+    "description": "Loans",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000038"
+  },
+  {
+    "description": "Loans and Investment",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "68414cb049c56536e942fcf5"
+  },
+  {
+    "description": "Lotto & Gambling",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "5e4badbb62bab23e8c4ca6da"
+  },
+  {
+    "description": "Medical",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000012"
+  },
+  {
+    "description": "Personal Care",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd9082800001d"
+  },
+  {
+    "description": "Pets",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd9082800001e"
+  },
+  {
+    "description": "Phone & Internet",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd9082800001b"
+  },
+  {
+    "description": "Private Sales",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "62208c54a922264e917a379a"
+  },
+  {
+    "description": "Professional Services",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000031"
+  },
+  {
+    "description": "Refunds",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "62208c36a922264e917a3799"
+  },
+  {
+    "description": "Reimbursements",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "62208c59a922264e917a379b"
+  },
+  {
+    "description": "Rent",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000021"
+  },
+  {
+    "description": "Rewards",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "62208c76a922264e917a379d"
+  },
+  {
+    "description": "Salaries & Wages",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd9082800002e"
+  },
+  {
+    "description": "Savings",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000034"
+  },
+  {
+    "description": "Shared Expenses",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "62208c63a922264e917a379c"
+  },
+  {
+    "description": "Software & Services",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "5eea1812cea72b1390370618"
+  },
+  {
+    "description": "Sport & Fitness",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000013"
+  },
+  {
+    "description": "Tax",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000024"
+  },
+  {
+    "description": "Tech & Appliances",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd9082800000c"
+  },
+  {
+    "description": "Transfer",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "5fd6276dc524165298445818"
+  },
+  {
+    "description": "Transport & Fuel",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd9082800000e"
+  },
+  {
+    "description": "TV",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000005"
+  },
+  {
+    "description": "Uncategorised",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000037"
+  },
+  {
+    "description": "Vehicle Expenses",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000003"
+  },
+  {
+    "description": "Vehicle Loans",
+    "isDeleted": false,
+    "isCustom": false,
+    "hasPlanned": false,
+    "mostUsedGrouping": [],
+    "id": "4d9c5dfc8aafd90828000017"
+  }
+]
