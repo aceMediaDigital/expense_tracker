@@ -31,7 +31,6 @@ class ExpenseTrackerApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: false,
         fontFamily: 'Inter',
-        //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: const IntroScreen(),
     );
