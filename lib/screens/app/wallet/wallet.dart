@@ -199,6 +199,7 @@ class _WalletScreenState extends State<WalletScreen> {
                            // Transactions Content
                            ListView.builder(
                              itemCount: 13,
+                             padding: EdgeInsets.zero,
                              itemBuilder: (BuildContext context, int index) {
                                return Column(
                                    children: <Widget>[
