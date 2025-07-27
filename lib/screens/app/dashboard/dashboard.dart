@@ -161,42 +161,39 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 SizedBox(height: 10),
                 SizedBox(
                   height: 250,
-                  child: Container(
-                    //color: Colors.red,
-                    child: ListView.builder(
-                      itemCount: 14,
-                      padding: EdgeInsets.zero,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          margin: EdgeInsets.symmetric(vertical: 5),
-                          child: Row(
-                            children: <Widget>[
-                              Row(
-                                children: <Widget>[
-                                  Container(
-                                    width: 50, height: 50,
-                                    decoration: BoxDecoration(
-                                        color: Color(0XFFF0F6F5),
-                                        borderRadius: BorderRadius.circular(8)
-                                    ),
+                  child: ListView.builder(
+                    itemCount: 14,
+                    padding: EdgeInsets.zero,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        margin: EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  width: 50, height: 50,
+                                  decoration: BoxDecoration(
+                                      color: Color(0XFFF0F6F5),
+                                      borderRadius: BorderRadius.circular(8)
                                   ),
-                                  SizedBox(width: 5,),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text('MacDonald\'s', style: TextStyle(color: Colors.black, fontSize: 16)),
-                                      Text('Today', style: TextStyle(color: Color(0XFF666666), fontSize: 13)),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              Spacer(),
-                              Text('+ R 58.90', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Color(0xFF25A969)),),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
+                                ),
+                                SizedBox(width: 5,),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text('MacDonald\'s', style: TextStyle(color: Colors.black, fontSize: 16)),
+                                    Text('Today', style: TextStyle(color: Color(0XFF666666), fontSize: 13)),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Spacer(),
+                            Text('+ R 58.90', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Color(0xFF25A969)),),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
