@@ -1,0 +1,227 @@
+/* =======================================================
+ *
+ * Created by anele on 26/07/2025.
+ *
+ * @anele_ace
+ *
+ * =======================================================
+ */
+
+import 'package:flutter/material.dart';
+
+class DashboardScreen extends StatefulWidget {
+
+  const DashboardScreen({super.key});
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  @override
+  Widget build(BuildContext context) {
+    Size screen = MediaQuery.of(context).size;
+
+    return SingleChildScrollView(
+      //physics: ,
+      child: Column(
+        children: <Widget>[
+          Stack(
+              clipBehavior: Clip.none,
+              children: <Widget>[
+                // Curved Header
+                Align(
+                    alignment: Alignment.topCenter,
+                    child: ClipPath(
+                        clipper: DashboardCurveClipper(),
+                        child: Container(
+                            height: 287, width: screen.width,
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: <Color>[Color(0xFF429690), Color(0xFF2A7C76)]
+                                )
+                            ),
+                            child: Row(
+                              children: <Widget>[
+                                SizedBox(width: 30),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    SizedBox(height: 80),
+                                    Text('Good Afternoon', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white)),
+                                    Text('Anele', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white)),
+                                  ],
+                                ),
+                              ],
+                            )
+                        )
+                    )
+                ),
+
+
+                // Card overlapping
+                Positioned(
+                  top: 150,
+                  left: (screen.width - (screen.width * 0.9)) / 2,
+                  child: Container(
+                      width: screen.width * 0.9, height: 200,
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+                      decoration: BoxDecoration(
+                        color: Color(0XFF2F7E79),
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: <BoxShadow>[
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.4), // shadow color
+                            blurRadius: 15, // softens the shadow
+                            offset: Offset(0, 15), // X,Y offset (0 = center, 4 = down)
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text(
+                                textAlign: TextAlign.center,
+                                'Total',
+                                style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w700),
+                              ),
+                              Icon(Icons.more_horiz, color: Colors.white,)
+                            ],
+                          ),
+                          SizedBox(height: 8),
+                          Text('R 2,548.00', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w800)),
+                          Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      Icon(Icons.do_not_disturb, size: 20, color: Colors.white),
+                                      SizedBox(width: 5),
+                                      Text('Income', style: TextStyle(fontSize: 16, color: Color(0XFFD0E5E4)),)
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text('R 00.00', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Row(
+                                    children: <Widget>[
+                                      Container(
+                                        width: 24, height: 24,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white.withValues(alpha: 0.4),
+                                          borderRadius: BorderRadius.circular(24),
+                                        ),
+                                        child: Center(child: Icon(Icons.arrow_upward, size: 20, color: Colors.white,),),
+                                      ),
+                                      SizedBox(width: 5),
+                                      Text('Expenses', style: TextStyle(fontSize: 16, color: Color(0XFFD0E5E4)),)
+                                    ],
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text('R 620.00', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      )
+                  ),
+                ),
+              ]
+          ),
+
+          //
+          SizedBox(height: 100),
+
+          //
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text('Transactions history', style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold)),
+                    Text('See all', style: TextStyle(fontSize: 14, color: Colors.grey),)
+                  ],
+                ),
+                SizedBox(height: 10),
+                SizedBox(
+                  height: 250,
+                  child: ListView.builder(
+                    itemCount: 14,
+                    padding: EdgeInsets.zero,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        margin: EdgeInsets.symmetric(vertical: 5),
+                        child: Row(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  width: 50, height: 50,
+                                  decoration: BoxDecoration(
+                                      color: Color(0XFFF0F6F5),
+                                      borderRadius: BorderRadius.circular(8)
+                                  ),
+                                ),
+                                SizedBox(width: 5,),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text('MacDonald\'s', style: TextStyle(color: Colors.black, fontSize: 16)),
+                                    Text('Today', style: TextStyle(color: Color(0XFF666666), fontSize: 13)),
+                                  ],
+                                )
+                              ],
+                            ),
+                            Spacer(),
+                            Text('+ R 58.90', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Color(0xFF25A969)),),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class DashboardCurveClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height - 50);
+
+    // Create the curve
+    path.quadraticBezierTo(
+      size.width / 2, size.height,
+      size.width, size.height - 50,
+    );
+
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => true;
+}

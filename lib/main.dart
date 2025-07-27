@@ -29,9 +29,8 @@ class ExpenseTrackerApp extends StatelessWidget {
     return MaterialApp(
       title: 'Expense Tracker',
       theme: ThemeData(
-        useMaterial3: true,
+        useMaterial3: false,
         fontFamily: 'Inter',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       home: const IntroScreen(),
     );

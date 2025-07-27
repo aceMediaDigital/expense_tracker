@@ -1,0 +1,278 @@
+/* =======================================================
+ *
+ * Created by anele on 26/07/2025.
+ *
+ * @anele_ace
+ *
+ * =======================================================
+ */
+
+import 'package:flutter/material.dart';
+import 'package:expense_tracker/utils/utils.dart';
+
+class WalletScreen extends StatefulWidget {
+
+  const WalletScreen({super.key});
+
+  @override
+  State<WalletScreen> createState() => _WalletScreenState();
+}
+
+class _WalletScreenState extends State<WalletScreen> {
+  
+  bool isIphoneSeDevice = DeviceConfig().isIphoneSE;
+  
+  @override
+  Widget build(BuildContext context) {
+    Size screen = MediaQuery.of(context).size;
+    return SingleChildScrollView(
+      child: Column(
+       children: <Widget>[
+      
+         Stack(
+             clipBehavior: Clip.none,
+             children: <Widget>[
+               // Curved Header
+               ClipPath(
+                   clipper: BottomCurveWallet(),
+                   child: Container(
+                     height: isIphoneSeDevice ? 170 : 200, width: screen.width,
+                     decoration: BoxDecoration(
+                         image: DecorationImage(
+                           fit: BoxFit.cover,
+                           alignment: Alignment.topRight,
+                           image: AssetImage('assets/images/circles.png'),
+                         ),
+                         gradient: LinearGradient(
+                             begin: Alignment.topLeft,
+                             end: Alignment.bottomRight,
+                             colors: <Color>[Color(0xFF429690), Color(0xFF2A7C76)]
+                         )
+                     ),
+                     child: Container(),
+                   )
+               ),
+      
+               Positioned(
+                   top: isIphoneSeDevice ? 30: 50,
+                   left: 0, right: 0,
+                   child: Padding(
+                     padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                     child: Row(
+                       children: <Widget>[
+                         Container(),
+                         Spacer(),
+                         Text(
+                             'Wallet',
+                             style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.w500)
+                         ),
+                         Spacer(),
+                         Container(
+                           width: 40, height: 40,
+                           decoration: BoxDecoration(
+                             color: Color(0XFFffffff).withValues(alpha: 0.6),
+                             borderRadius: BorderRadius.circular(40),
+                           ),
+                           child: Center(child: Icon(Icons.notification_add, size: 20, color: Color(0XFFffffff),),),
+                         ),
+                       ],
+                     ),
+                   )
+               ),
+               //
+               Positioned(
+                 top: screen.height * 0.12,
+                 child: Container(
+                   width: screen.width, height: 73,
+                   decoration: BoxDecoration(
+                     color: Colors.white,
+                     borderRadius: BorderRadius.only(
+                       topLeft: Radius.circular(50),
+                       topRight: Radius.circular(50),
+                     ),
+                   ),
+                   child: Column(
+                     children: [
+                       Spacer(),
+                       Text(
+                         textAlign: TextAlign.center,
+                           'Spent this Month',
+                         style: TextStyle(color: Color(0XFF666666), fontSize: 16),
+                       ),
+                     ],
+                   )
+                 ),
+               ),
+             ]
+         ),
+      
+         Text(
+             'R 2,548.00',
+           style: TextStyle(fontSize: 30, color: Color(0XFF222222), fontWeight: FontWeight.w800),
+         ),
+         SizedBox(height: 20),
+      
+         SizedBox(
+           width: 240, height: 85,
+           child: Row(
+             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+             children: <Widget>[
+               Column(
+                 children: [
+                   Container(
+                     width: 60, height: 60,
+                     decoration: BoxDecoration(
+                         //color: Color(0XFF549994),
+                       border: Border.all(color: Color(0XFF549994)),
+                       borderRadius: BorderRadius.circular(60)
+                     ),
+                     child: Center(child: Icon(Icons.add, color: Color(0XFF549994)),),
+                   ),
+                   Spacer(),
+                   Text('Add')
+                 ],
+               ),
+      
+               Column(
+                 children: [
+                   Container(
+                     width: 60, height: 60,
+                     decoration: BoxDecoration(
+                       //color: Color(0XFF549994),
+                         border: Border.all(color: Color(0XFF549994)),
+                         borderRadius: BorderRadius.circular(60)
+                     ),
+                     child: Center(child: Icon(Icons.payment, color: Color(0XFF549994)),),
+                   ),
+                   Spacer(),
+                   Text('Pay')
+                 ],
+               ),
+      
+               Column(
+                 children: [
+                   Container(
+                     width: 60, height: 60,
+                     decoration: BoxDecoration(
+                         border: Border.all(color: Color(0XFF549994)),
+                         borderRadius: BorderRadius.circular(60)
+                     ),
+                     child: Center(child: Icon(Icons.send, color: Color(0XFF549994)),),
+                   ),
+                   Spacer(),
+                   Text('Send')
+                 ],
+               ),
+             ],
+           ),
+         ),
+         SizedBox(height: 30),
+      
+         //DefaultTabController(),
+         DefaultTabController(
+             length: 2,
+             initialIndex: 0,
+             child: Column(
+                 mainAxisSize: MainAxisSize.min,
+                 children: <Widget>[
+                   Container(
+                     margin: EdgeInsets.symmetric(horizontal: 10),
+                     decoration: BoxDecoration(
+                       color: Color(0XFFF4F6F6),
+                       borderRadius: BorderRadius.circular(48)
+                     ),
+                     child: TabBar(
+                       padding: EdgeInsets.symmetric(vertical: 5, horizontal: 6),
+                         indicator: BoxDecoration(
+                             color: Colors.white,
+                             borderRadius: BorderRadius.circular(48)
+                         ),
+                         indicatorColor: Colors.transparent,
+                         labelStyle: TextStyle(fontSize: 14, color: Color(0XFF666666)),
+                         tabs: <Widget>[Tab(text: 'Transactions'),Tab(text: 'Upcoming Bills'),]
+                     ),
+                   ),
+                   SizedBox(height: 20),
+      
+                   Container(
+                       //color: Colors.red,
+                       //margin: const EdgeInsets.symmetric(horizontal: 10,),
+                       margin: EdgeInsets.zero,
+                       height: 270,
+                       child: TabBarView(
+                           children: <Widget>[
+      
+                             // Transactions Content
+                             ListView.builder(
+                               itemCount: 13,
+                               padding: EdgeInsets.zero,
+                               itemBuilder: (BuildContext context, int index) {
+                                 return Column(
+                                     children: <Widget>[
+                                       ListTile(
+                                         leading: Container(
+                                           width: 50, height: 50,
+                                           decoration: BoxDecoration(
+                                               color: Color(0XFFF0F6F5),
+                                               borderRadius: BorderRadius.circular(8)
+                                           ),
+                                         ),
+                                         title: Column(
+                                           crossAxisAlignment: CrossAxisAlignment.start,
+                                           children: <Widget>[
+                                             Text('MacDonald\'s', style: TextStyle(color: Colors.black, fontSize: 16),),
+                                             Text('Today', style: TextStyle(color: Color(0XFF666666), fontSize: 13),),
+                                           ],
+                                         ),
+                                         trailing: Text('R 48.90'),
+                                       )
+                                     ]
+                                 );
+                               },
+                             ),
+      
+      
+                             // Bills Content
+                              SizedBox( height: 40, child: Column(
+                                children: <Widget>[
+                                  SizedBox(height: 20),
+                                  Text('Contact'),
+                                  Text('hello@acemedia.co.za'),
+                                ],
+                              )),
+                           ]
+                       )
+                   ),
+      
+                 ]
+             )
+         ),
+      
+      
+       ],
+      ),
+    );
+  }
+}
+
+
+class BottomCurveWallet extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height - 50);
+
+    // Create the curve
+    path.quadraticBezierTo(
+      size.width / 2, size.height,
+      size.width, size.height - 50,
+    );
+
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => true;
+}

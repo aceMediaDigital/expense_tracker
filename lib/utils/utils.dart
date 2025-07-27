@@ -1,11 +1,10 @@
 /* =======================================================
  *
- * Created by anele on 29/06/2025.
+ * Created by anele on 27/07/2025.
  *
  * @anele_ace
  *
  * =======================================================
  */
 
-export './app/app.dart';
-export './splash/splash.dart';
+export './device.dart';
