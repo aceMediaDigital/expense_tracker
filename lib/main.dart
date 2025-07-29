@@ -9,10 +9,15 @@
 
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:expense_tracker/utils/utils.dart';
 import 'package:expense_tracker/screens/screens.dart';
 
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
+
+  await DeviceConfig().init();
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
@@ -27,6 +32,7 @@ class ExpenseTrackerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Expense Tracker',
       theme: ThemeData(
         useMaterial3: false,

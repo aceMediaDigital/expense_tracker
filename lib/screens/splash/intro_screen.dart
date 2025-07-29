@@ -9,6 +9,7 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:expense_tracker/screens/app/index.dart';
 
 class IntroScreen extends StatefulWidget {
 
@@ -63,7 +64,13 @@ class _IntroScreenState extends State<IntroScreen> {
                           colors: <Color>[Color(0xFF63B5AF), Color(0xFF438883)]
                       )
                   ),
-                  child: Center(child: Text('mono', style: TextStyle(color: Colors.white, fontSize: 50, fontWeight: FontWeight.w800))),
+                  child: Center(
+                      child: Text(
+                          'mono',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white, fontSize: 50, fontWeight: FontWeight.w800)
+                      )
+                  ),
                 ),
 
                 // Screen Two
@@ -111,7 +118,9 @@ class _IntroScreenState extends State<IntroScreen> {
                           SizedBox(height: 20),
 
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => AppIndexScreen()));
+                            },
                             child: Container(
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
