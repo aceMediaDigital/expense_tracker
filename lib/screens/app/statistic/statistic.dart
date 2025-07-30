@@ -21,7 +21,7 @@ class StatisticScreen extends StatefulWidget {
 class _StatisticScreenState extends State<StatisticScreen> {
   bool showAvg = false;
 
-  List<Color> gradientColors = [
+  List<Color> gradientColors = <Color>[
     Color(0xFF50E4FF),
     Color(0xFF2196F3),
   ];
@@ -146,7 +146,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
   }
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 16,);
+    const TextStyle style = TextStyle(fontWeight: FontWeight.bold, fontSize: 16,);
 
     Widget text;
 
@@ -172,7 +172,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
   }
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 15);
+    const TextStyle style = TextStyle(fontWeight: FontWeight.bold, fontSize: 15);
 
     String text;
     switch (value.toInt()) {
@@ -197,10 +197,10 @@ class _StatisticScreenState extends State<StatisticScreen> {
   LineChartData mainData() {
     return LineChartData(
       gridData: FlGridData(
-        show: true,
+        //show: true,
         verticalInterval: 1,
         horizontalInterval: 1,
-        drawVerticalLine: true,
+        //drawVerticalLine: true,
         getDrawingHorizontalLine: (double value) {
           return const FlLine(
             color: Colors.white10,
@@ -215,9 +215,9 @@ class _StatisticScreenState extends State<StatisticScreen> {
         },
       ),
       titlesData: FlTitlesData(
-        show: true,
-        rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-        topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        //show: true,
+        //rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+        //topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,

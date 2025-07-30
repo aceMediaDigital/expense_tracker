@@ -9,6 +9,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/utils/utils.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProfileScreen extends StatefulWidget {
 
@@ -59,7 +60,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     radius: 50, backgroundColor: Colors.white,
                     child: CircleAvatar(
                       radius: 46,
-                      backgroundImage: AssetImage('assets/images/anele.jpeg'),
+                      backgroundColor: Colors.transparent,
+                      child: ClipOval(
+                        child: CachedNetworkImage(
+                          imageUrl: 'https://media.licdn.com/dms/image/v2/C560BAQEyd84_pj-sUg/company-logo_200_200/company-logo_200_200/0/1646993302092?e=1756944000&v=beta&t=Ik_ojgQ8Z7AfKyUs5GtwqmUn7Bo5LVDu4HdIqvdKy8k',
+                          fit: BoxFit.cover,
+                          placeholder: (BuildContext context, String url) => CircularProgressIndicator(),
+                          errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -89,12 +98,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   trailing: Icon(Icons.arrow_forward_ios, size: 20, color: Colors.blue),
                 ),
 
-                ListTile(
+                /*ListTile(
                   dense: true,
                   leading: Icon(Icons.group),
                   title: Text('Personal profile', style: TextStyle(fontSize: 16,color: Color(0XFF000000)),),
                   trailing: Icon(Icons.arrow_forward_ios, size: 20, color: Colors.blue),
-                ),
+                ),*/
 
                 ListTile(
                   dense: true,
