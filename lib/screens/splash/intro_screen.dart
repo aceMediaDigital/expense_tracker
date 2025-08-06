@@ -9,6 +9,7 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:expense_tracker/utils/utils.dart';
 import 'package:expense_tracker/screens/app/index.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -21,6 +22,7 @@ class IntroScreen extends StatefulWidget {
 
 class _IntroScreenState extends State<IntroScreen> {
   int currentPage = 0;
+  bool isIphoneSeDevice = DeviceConfig().isIphoneSE;
   final PageController _controller = PageController();
 
 
@@ -87,16 +89,17 @@ class _IntroScreenState extends State<IntroScreen> {
                       child: Stack(
                         children: <Widget>[
                           Positioned(
-                              top: 120, left: 48,
+                              top:  isIphoneSeDevice ? 16 : 120, left: 48,
                               child: Image.asset('assets/images/coin.png')
                           ),
 
                           Positioned(
-                            right: 30, top: screen.height * 0.2,
+                              right: isIphoneSeDevice ? 20 : 30,
+                              top: isIphoneSeDevice ? 70 : screen.height * 0.2,
                               child: Image.asset('assets/images/donut.png')
                           ),
                           Positioned(
-                            top: 120,
+                            top:  isIphoneSeDevice ? 05 : 120,
                             child: Image.asset(
                               //width: screen.width, height: 300,
                               'assets/images/moneyman.png',
@@ -113,9 +116,10 @@ class _IntroScreenState extends State<IntroScreen> {
                           Text(
                               textAlign: TextAlign.center,
                               'Spend Smarter\nSave More',
-                              style: TextStyle(color: Color(0xFF438883), fontSize: 36, fontWeight: FontWeight.bold)
+                              style: TextStyle(color: Color(0xFF438883), fontSize: isIphoneSeDevice ? 26 : 36, fontWeight: FontWeight.bold)
                           ),
-                          SizedBox(height: 20),
+
+                          Spacer(),
 
                           GestureDetector(
                             onTap: () {
@@ -130,15 +134,17 @@ class _IntroScreenState extends State<IntroScreen> {
                                     end: Alignment.bottomCenter,
                                     colors: <Color>[Color(0xFF63B5AF), Color(0xFF438883)]
                                 ),
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                    offset: Offset(0, 10),
-                                    color: Color(0XFF3E7C78),
-                                    spreadRadius: 3, blurRadius: 24,
-                                  )
-                                ],
+                                  boxShadow: isIphoneSeDevice
+                                      ? <BoxShadow>[]
+                                      : const <BoxShadow>[
+                                        BoxShadow(
+                                          offset: Offset(0, 5),
+                                          color: Color(0xFF3E7C78),
+                                          spreadRadius: 1, blurRadius: 10,
+                                        ),
+                                  ],
                               ),
-                              height: 67, width: screen.width * 0.7,
+                              height: isIphoneSeDevice ? 47 : 67, width: screen.width * 0.7,
                               padding: EdgeInsets.symmetric(horizontal: 16),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -152,11 +158,7 @@ class _IntroScreenState extends State<IntroScreen> {
                             ),
                           ),
                           Spacer(),
-                          Text(
-                            'Already have account? Log In',
-                            style: TextStyle(fontSize: 14, color: Color(0xFF444444),),
-                          ),
-                          Spacer()
+
                         ],
                       ),
                     )

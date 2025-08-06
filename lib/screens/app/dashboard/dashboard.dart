@@ -10,10 +10,12 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/services/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class DashboardScreen extends StatefulWidget {
+  final List<Map<String, dynamic>> transactions;
 
-  const DashboardScreen({super.key});
+  const DashboardScreen({super.key, required this.transactions});
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -24,6 +26,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   double currentMonth = 0.0;
   double lastMonth = 0.0;
   double? monthlyChange;
+  String userName = '';
   List<Map<String, dynamic>> recentTransactions = <Map<String, dynamic>>[];
 
   final DateTime now = DateTime.now();
@@ -71,10 +74,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
     }
   }
 
+  Future<void> loadUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      userName = prefs.getString('firstName') ?? '';
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     _loadExpenses();
+    loadUserData();
   }
 
   @override
@@ -110,7 +122,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   children: <Widget>[
                                     SizedBox(height: 80),
                                     Text(getGreeting(), style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white)),
-                                    Text('Anele', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white)),
+                                    Text('${userName}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white)),
                                   ],
                                 ),
                               ],
@@ -132,9 +144,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: <BoxShadow>[
                           BoxShadow(
+                            blurRadius: 15, offset: Offset(0, 15),
                             color: Colors.black.withValues(alpha: 0.4),
-                            blurRadius: 15,
-                            offset: Offset(0, 15),
                           ),
                         ],
                       ),
@@ -279,6 +290,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     },
                   ),
                 ),
+                SizedBox(height: 10),
+
+
               ],
             ),
           )

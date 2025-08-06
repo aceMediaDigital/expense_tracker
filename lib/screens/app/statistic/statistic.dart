@@ -7,6 +7,7 @@
  * =======================================================
  */
 
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -20,6 +21,7 @@ class StatisticScreen extends StatefulWidget {
 
 class _StatisticScreenState extends State<StatisticScreen> {
   bool showAvg = false;
+  DateTime now = DateTime.now();
 
   List<Color> gradientColors = <Color>[
     Color(0xFF50E4FF),
@@ -28,6 +30,8 @@ class _StatisticScreenState extends State<StatisticScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    Size screen = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
       child: Padding(
@@ -44,10 +48,11 @@ class _StatisticScreenState extends State<StatisticScreen> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   decoration: BoxDecoration(
-                    color: Color(0XFF438883),
+                    //color: Color(0XFF438883),
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.circular(10)
                   ),
-                  child: Center(child: Text('Day', style: TextStyle(fontSize: 13, color: Colors.white))),
+                  child: Center(child: Text('Day', style: TextStyle(fontSize: 13,))),
                 ),
       
                 Container(
@@ -62,10 +67,11 @@ class _StatisticScreenState extends State<StatisticScreen> {
                 Container(
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                     decoration: BoxDecoration(
-                        color: Colors.transparent,
+                        //color: Colors.transparent,
+                        color: Color(0XFF438883),
                         borderRadius: BorderRadius.circular(10)
                     ),
-                    child: Center(child: Text('Month', style: TextStyle(fontSize: 13, color: Color(0xFF666666))))
+                    child: Center(child: Text('Month', style: TextStyle(fontSize: 13, color: Colors.white )))
                 ),
       
                 Container(
@@ -80,21 +86,83 @@ class _StatisticScreenState extends State<StatisticScreen> {
             ),
             SizedBox(height: 26),
       
-            Stack(
-                children: <Widget>[
-                  AspectRatio(
-                      aspectRatio: 1.70,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 24, bottom: 12,),
-                        child: LineChart(
-                          mainData(),
-                        ),
-                      )
-                  ),
-                ]
+
+            SizedBox(
+              height: 220, width: screen.width,
+              child: LineChart(
+                LineChartData(
+                  gridData: FlGridData(show: false),
+                  borderData: FlBorderData(show: false, border: Border.all(width: .2)),
+                  lineBarsData: <LineChartBarData>[
+                    LineChartBarData(
+                      gradient: LinearGradient(colors: <Color>[
+                        Colors.lightBlue, Colors.purple, Colors.red
+                      ]),
+                      barWidth: 8,
+                      isCurved: true,
+                      isStrokeCapRound: true,
+                      //preventCurveOverShooting: true,
+                      spots: <FlSpot>[
+                        FlSpot(0, 0),
+                        FlSpot(1, 3),
+                        FlSpot(2, 0),
+                      ]
+                    ),
+
+                    LineChartBarData(
+                        barWidth: 8,
+                        isCurved: true,
+                        color: Colors.green,
+                        isStrokeCapRound: true,
+                        spots: <FlSpot>[
+                          FlSpot(0, 0.9),
+                          FlSpot(1, 0.3),
+                          FlSpot(2, 1),
+                        ]
+                    ),
+
+                    LineChartBarData(
+                        barWidth: 8,
+                        isCurved: true,
+                        color: Colors.brown,
+                        isStrokeCapRound: true,
+                        spots: <FlSpot>[
+                          FlSpot(0, 1.3),
+                          FlSpot(1, 2.3),
+                          FlSpot(2, 1.3),
+                        ]
+                    ),
+
+                  ],
+                  titlesData: FlTitlesData(
+                    topTitles: AxisTitles(),
+                    rightTitles: AxisTitles(),
+                    leftTitles: AxisTitles(),
+                    bottomTitles: AxisTitles(
+                      sideTitles: SideTitles(
+                        interval: 1,
+                        showTitles: true,
+                        getTitlesWidget: (double value, TitleMeta meta) {
+                          final List<String> months = List.generate(3, (int i) {
+                            final DateTime date = DateTime(now.year, now.month - (3 - i));
+                            return DateFormat('MMM').format(date);
+                          });
+
+                          if (value.toInt() >= 0 && value.toInt() < months.length) {
+                            return Text(months[value.toInt()], style: TextStyle(fontSize: 12));
+                          } else {
+                            return const SizedBox.shrink();
+                          }
+                        },
+                      ),
+                    ),
+                  )
+                ),
+              ),
             ),
             SizedBox(height: 30),
-      
+
+            /*
             Column(
               children: <Widget>[
                 Row(
@@ -137,140 +205,13 @@ class _StatisticScreenState extends State<StatisticScreen> {
                     },
                   ),
                 ),
+
               ],
-            )
+            ),
+            */
           ]
         ),
       ),
-    );
-  }
-
-  Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const TextStyle style = TextStyle(fontWeight: FontWeight.bold, fontSize: 16,);
-
-    Widget text;
-
-    switch (value.toInt()) {
-      case 2:
-        text = const Text('May', style: style);
-        break;
-      case 5:
-        text = const Text('June', style: style);
-        break;
-      case 8:
-        text = const Text('July', style: style);
-        break;
-      default:
-        text = const Text('', style: style);
-        break;
-    }
-
-    return SideTitleWidget(
-      meta: meta,
-      child: text,
-    );
-  }
-
-  Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const TextStyle style = TextStyle(fontWeight: FontWeight.bold, fontSize: 15);
-
-    String text;
-    switch (value.toInt()) {
-      case 1:
-        text = '10K';
-        break;
-      case 3:
-        text = '30k';
-        break;
-      case 5:
-        text = '50k';
-        break;
-      default:
-        return Container();
-    }
-
-    return Text(text, style: style, textAlign: TextAlign.left);
-  }
-
-
-  ///////
-  LineChartData mainData() {
-    return LineChartData(
-      gridData: FlGridData(
-        //show: true,
-        verticalInterval: 1,
-        horizontalInterval: 1,
-        //drawVerticalLine: true,
-        getDrawingHorizontalLine: (double value) {
-          return const FlLine(
-            color: Colors.white10,
-            strokeWidth: 1,
-          );
-        },
-        getDrawingVerticalLine: (double value) {
-          return const FlLine(
-            color: Colors.white10,
-            strokeWidth: 1,
-          );
-        },
-      ),
-      titlesData: FlTitlesData(
-        //show: true,
-        //rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-        //topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            reservedSize: 30,
-            interval: 1,
-            getTitlesWidget: bottomTitleWidgets,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-            interval: 1,
-            getTitlesWidget: leftTitleWidgets,
-            reservedSize: 42,
-          ),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: false,
-        border: Border.all(color: const Color(0xff37434d),width: 3),
-      ),
-      minX: 0,
-      maxX: 11,
-      minY: 0,
-      maxY: 6,
-      lineBarsData: <LineChartBarData>[
-        LineChartBarData(
-          spots: const <FlSpot>[
-            FlSpot(0, 3),
-            FlSpot(2.6, 2),
-            FlSpot(4.9, 5),
-            FlSpot(6.8, 3.1),
-            FlSpot(8, 4),
-            FlSpot(9.5, 3),
-            FlSpot(11, 4),
-          ],
-          isCurved: true,
-          gradient: LinearGradient(
-            colors: gradientColors,
-          ),
-          barWidth: 5,
-          isStrokeCapRound: true,
-          dotData: const FlDotData(show: false,),
-          belowBarData: BarAreaData(
-            show: true,
-            gradient: LinearGradient(
-              colors: gradientColors
-                  .map((color) => color.withValues(alpha: 0.3))
-                  .toList(),
-            ),
-          ),
-        ),
-      ],
     );
   }
 

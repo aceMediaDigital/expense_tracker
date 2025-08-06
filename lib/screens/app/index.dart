@@ -34,8 +34,8 @@ class _AppIndexScreenState extends State<AppIndexScreen> {
 
   final ExpenseAppService expenseService = ExpenseAppService();
 
-  final List<Widget> _buildBody = const <Widget> [
-    DashboardScreen(),
+  List<Widget> get _buildBody => <Widget>[
+    DashboardScreen(transactions: recentTransactions),
     StatisticScreen(),
     WalletScreen(),
     ProfileScreen(),
@@ -66,6 +66,7 @@ class _AppIndexScreenState extends State<AppIndexScreen> {
     });
   }
 
+  /*
   void _clearAll() async {
     await expenseService.truncateExpenses();
   }
@@ -73,8 +74,9 @@ class _AppIndexScreenState extends State<AppIndexScreen> {
   void _deleteTable() async {
     await expenseService.dropExpensesTable();
   }
+  */
 
-  void _getDbTotal() async {
+  Future<void> _getDbTotal() async {
     final List<Map<String, dynamic>> result = await expenseService.getAllExpensesFromDB();
 
     final double total = result.fold<double>(
@@ -91,6 +93,14 @@ class _AppIndexScreenState extends State<AppIndexScreen> {
     _nameController.clear();
     _costController.clear();
     _dateController.clear();
+  }
+
+  Future<void> _loadRecentTransactions() async {
+    final List<Map<String, dynamic>> recent = await expenseService.getLast20Expenses();
+
+    setState(() {
+      recentTransactions = recent;
+    });
   }
 
   String _getCategoryName(String? categoryId) {
@@ -111,6 +121,8 @@ class _AppIndexScreenState extends State<AppIndexScreen> {
     );
 
     _clearTextField();
+    await _getDbTotal(); // Update grand total
+    await _loadRecentTransactions(); // Update transaction list
   }
 
 
@@ -121,6 +133,7 @@ class _AppIndexScreenState extends State<AppIndexScreen> {
     //_clearAll();
     //_deleteTable();
     _getDbTotal();
+    _loadRecentTransactions();
   }
 
   @override
@@ -154,6 +167,7 @@ class _AppIndexScreenState extends State<AppIndexScreen> {
             ),
             label: 'Home',
           ),
+
           BottomNavigationBarItem(
             icon: SvgPicture.asset('assets/images/svg/bar-chart_icon.svg'),
             activeIcon: SvgPicture.asset('assets/images/svg/bar-chart_icon.svg',
@@ -161,6 +175,7 @@ class _AppIndexScreenState extends State<AppIndexScreen> {
             ),
             label: 'Stats',
           ),
+
           BottomNavigationBarItem(
             icon: SvgPicture.asset('assets/images/svg/wallet_icon.svg'),
             activeIcon: SvgPicture.asset('assets/images/svg/wallet_icon.svg',
@@ -168,6 +183,7 @@ class _AppIndexScreenState extends State<AppIndexScreen> {
             ),
             label: 'Wallet',
           ),
+
           BottomNavigationBarItem(
             icon: SvgPicture.asset('assets/images/svg/user_icon.svg'),
             activeIcon: SvgPicture.asset('assets/images/svg/user_icon.svg',
