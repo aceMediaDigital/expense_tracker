@@ -8,6 +8,7 @@
  */
 
 import 'dart:async';
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/utils/utils.dart';
 import 'package:expense_tracker/screens/app/index.dart';
@@ -67,10 +68,24 @@ class _IntroScreenState extends State<IntroScreen> {
                       )
                   ),
                   child: Center(
-                      child: Text(
-                          'mono',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 50, fontWeight: FontWeight.w800)
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                              'check jou bucks',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w800)
+                          ),
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                            child: Text(
+                                'Because you wanna keep your bucks in check',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w300, fontStyle: FontStyle.italic)
+                            ),
+                          ),
+                        ],
                       )
                   ),
                 ),
@@ -81,41 +96,20 @@ class _IntroScreenState extends State<IntroScreen> {
                     Container(
                       height: screen.height * 0.7, width: screen.width,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('assets/images/background.png'),
-                        ),
+                        //image: DecorationImage(fit: BoxFit.cover, image: AssetImage('assets/images/background.png')),
                       ),
-                      child: Stack(
-                        children: <Widget>[
-                          Positioned(
-                              top:  isIphoneSeDevice ? 16 : 120, left: 48,
-                              child: Image.asset('assets/images/coin.png')
-                          ),
-
-                          Positioned(
-                              right: isIphoneSeDevice ? 20 : 30,
-                              top: isIphoneSeDevice ? 70 : screen.height * 0.2,
-                              child: Image.asset('assets/images/donut.png')
-                          ),
-                          Positioned(
-                            top:  isIphoneSeDevice ? 05 : 120,
-                            child: Image.asset(
-                              //width: screen.width, height: 300,
-                              'assets/images/moneyman.png',
-                            ),
-                          ),
-                        ],
-                      ),
+                      child: Lottie.network(
+                          'https://lottie.host/3f9ea5d2-d9c6-4006-8a99-dfe0f6e609b1/A3hptcu2Ka.json'),
                     ),
 
                     SizedBox(
                       width: screen.width, height: screen.height * 0.3,
                       child: Column(
                         children: <Widget>[
+                          //SizedBox(height: 20),
                           Text(
                               textAlign: TextAlign.center,
-                              'Spend Smarter\nSave More',
+                              'Monitor Your Spend\nSave a Buck',
                               style: TextStyle(color: Color(0xFF438883), fontSize: isIphoneSeDevice ? 26 : 36, fontWeight: FontWeight.bold)
                           ),
 
