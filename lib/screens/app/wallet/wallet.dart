@@ -51,7 +51,7 @@ class _WalletScreenState extends State<WalletScreen> {
 
   String _getCategoryName(String? categoryId) {
     final dynamic category = itemListApi.firstWhere(
-          (e) => e['id'] == categoryId,
+          (dynamic e) => e['id'] == categoryId,
       orElse: () => <String, String>{'description': 'Unknown'},
     );
     return category['description'];
@@ -341,7 +341,7 @@ class _WalletScreenState extends State<WalletScreen> {
                                itemCount: allTimeCategories.length,
                                padding: EdgeInsets.zero,
                                itemBuilder: (BuildContext context, int index) {
-                                 final category = allTimeCategories[index];
+                                 final Map<String, dynamic> category = allTimeCategories[index];
                                  return Column(
                                      children: <Widget>[
                                        ListTile(

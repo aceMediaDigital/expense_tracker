@@ -7,12 +7,9 @@
  * =======================================================
  */
 
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:expense_tracker/widgets/widgets.dart';
 import 'package:expense_tracker/screens/app/app.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:expense_tracker/services/services.dart';
 
 class AppIndexScreen extends StatefulWidget {
