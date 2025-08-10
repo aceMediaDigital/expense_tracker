@@ -63,11 +63,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         radius: 46,
                         backgroundColor: Colors.transparent,
                         child: ClipOval(
-                          child: CachedNetworkImage(
-                            imageUrl: 'https://media.licdn.com/dms/image/v2/C560BAQEyd84_pj-sUg/company-logo_200_200/company-logo_200_200/0/1646993302092?e=1756944000&v=beta&t=Ik_ojgQ8Z7AfKyUs5GtwqmUn7Bo5LVDu4HdIqvdKy8k',
+                          child: Image.asset(
+                            'assets/images/aceMedia.jpeg',
                             fit: BoxFit.cover,
-                            placeholder: (BuildContext context, String url) => CircularProgressIndicator(),
-                            errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error),
                           ),
                         ),
                       ),
@@ -80,7 +78,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Center(
             child: Column(
               children: <Widget>[
-                Text('Ace Media', style: TextStyle(fontSize: 20, color: Color(0XFF222222))),
+                Text('AceMedia', style: TextStyle(fontSize: 20, color: Color(0XFF222222))),
                 Text('hello@acemedia.co.za', style: TextStyle(fontSize: 14, color: Color(0XFF438883))),
               ],
             ),
