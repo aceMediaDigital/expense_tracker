@@ -10,7 +10,6 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/utils/utils.dart';
 import 'package:expense_tracker/screens/app/app.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class ProfileScreen extends StatefulWidget {
 

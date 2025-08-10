@@ -10,6 +10,7 @@
 import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:expense_tracker/utils/utils.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:expense_tracker/services/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,6 +26,8 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+
+  bool isIphoneSeDevice = DeviceConfig().isIphoneSE;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
@@ -126,7 +129,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   String _getCategoryName(String? categoryId) {
     final dynamic category = itemListApi.firstWhere(
-          (e) => e['id'] == categoryId,
+          (dynamic e) => e['id'] == categoryId,
       orElse: () => <String, String>{'description': 'Unknown'},
     );
     return category['description'];
@@ -190,7 +193,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       child: ClipPath(
                           clipper: DashboardCurveClipper(),
                           child: Container(
-                              height: 287, width: screen.width,
+                              height: isIphoneSeDevice ? 237 : 287, width: screen.width,
                               decoration: BoxDecoration(
                                   gradient: LinearGradient(
                                       begin: Alignment.topLeft,
@@ -204,9 +207,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      SizedBox(height: 80),
+                                      SizedBox(height: isIphoneSeDevice ? 40 : 80),
                                       Text(getGreeting(), style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white)),
-                                      Text('${userName}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white)),
+                                      Text(userName, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.white)),
                                     ],
                                   ),
                                 ],
@@ -218,7 +221,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       
                   // Card overlapping
                   Positioned(
-                    top: 150,
+                    top: isIphoneSeDevice ? 100 : 150,
                     left: (screen.width - (screen.width * 0.9)) / 2,
                     child: Container(
                         width: screen.width * 0.9, height: 200,
@@ -242,13 +245,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 Text(
                                   textAlign: TextAlign.center,
                                   '${DateFormat.yMMMM().format(now)} Total - (so far)',
-                                  style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w700),
+                                  style: TextStyle(fontSize: isIphoneSeDevice ? 14:16, color: Colors.white, fontWeight: FontWeight.w700),
                                 ),
                                 Icon(Icons.more_horiz, color: Colors.white,)
                               ],
                             ),
                             SizedBox(height: 8),
-                            Text('R ${currentMonth.toStringAsFixed(2) ?? '0.00'}', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w800)),
+                            Text('R ${currentMonth.toStringAsFixed(2)}', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w800)),
                             Spacer(),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -258,13 +261,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                   children: <Widget>[
                                     Row(
                                       children: <Widget>[
-                                        //Icon(Icons.do_not_disturb, size: 20, color: Colors.white),
-                                        //SizedBox(width: 5),
                                         Text('${getPreviousMonthName()} Total', style: TextStyle(fontSize: 16, color: Color(0XFFD0E5E4)),)
                                       ],
                                     ),
                                     SizedBox(height: 5),
-                                    Text('R ${lastMonth.toStringAsFixed(2) ?? '0.00'}', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                    Text('R ${lastMonth.toStringAsFixed(2)}', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
                                   ],
                                 ),
                                 Column(
@@ -312,7 +313,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text('Transactions history', style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold)),
-                      Text('See all', style: TextStyle(fontSize: 14, color: Colors.grey),)
+                      
                     ],
                   ),
                   SizedBox(height: 10),

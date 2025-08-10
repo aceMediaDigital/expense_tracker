@@ -7,7 +7,6 @@
  * =======================================================
  */
 
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:expense_tracker/utils/utils.dart';
@@ -38,7 +37,6 @@ class _StatisticScreenState extends State<StatisticScreen> {
     final Map<String, dynamic> result = await expenseService.getCategoriesByTotal();
     setState(() {
       allTimeCategories = result['categories'];
-      //allTimeCategories = [];
     });
   }
 
@@ -126,7 +124,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   sections: List.generate(
                       allTimeCategories.length > 4 ?
                       4 : allTimeCategories.length,
-                        (index) {
+                        (int index) {
                         final Map<String, dynamic> item = allTimeCategories[index];
                         return PieChartSectionData(
                           radius: touchedIndex == index ? 60 : 50,
@@ -151,15 +149,15 @@ class _StatisticScreenState extends State<StatisticScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 70),
 
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(
                 allTimeCategories.length > 4 ? 4 : allTimeCategories.length,
-                    (index) {
-                  final item = allTimeCategories[index];
+                    (int index) {
+                  final Map<String, dynamic> item = allTimeCategories[index];
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 5),
                     child: Indicator(

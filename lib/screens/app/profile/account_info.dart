@@ -41,7 +41,6 @@ class _AccountInfoScreenState extends State<AccountInfoScreen> {
     firstNameController.dispose();
     lastNameController.dispose();
     cellNumberController.dispose();
-    //whatsAppPlusController.dispose();
   }
 
   @override
