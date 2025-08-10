@@ -72,7 +72,7 @@ class _IntroScreenState extends State<IntroScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                              'check jou bucks',
+                              'Moola Mate',
                               textAlign: TextAlign.center,
                               style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w800)
                           ),
