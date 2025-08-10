@@ -9,3 +9,4 @@
 
 export './app_service.dart';
 export './database_service.dart';
+export './local_notification_service.dart';

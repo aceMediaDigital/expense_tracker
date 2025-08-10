@@ -8,3 +8,4 @@
  */
 
 export './device.dart';
+export './indicator.dart';

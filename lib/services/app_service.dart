@@ -134,10 +134,10 @@ class ExpenseAppService {
   Future<Map<String, dynamic>> getCategoriesByTotal() async {
     final List<Map<String, dynamic>> allExpenses = await _dbService.getExpenses();
 
-    final Map<String, double> categoryTotals = {};
+    final Map<String, double> categoryTotals = <String, double>{};
     double overallTotal = 0.0;
 
-    for (final expense in allExpenses) {
+    for (final Map<String, dynamic> expense in allExpenses) {
       final String category = expense['categoryName'];
       final double cost = (expense['cost'] as num).toDouble();
 

@@ -9,6 +9,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:expense_tracker/utils/utils.dart';
+import 'package:expense_tracker/services/services.dart';
 
 class StatisticScreen extends StatefulWidget {
 
@@ -19,37 +21,60 @@ class StatisticScreen extends StatefulWidget {
 }
 
 class _StatisticScreenState extends State<StatisticScreen> {
-  bool showAvg = false;
+  int touchedIndex = 0;
 
-  List<Color> gradientColors = <Color>[
-    Color(0xFF50E4FF),
-    Color(0xFF2196F3),
+  final ExpenseAppService expenseService = ExpenseAppService();
+  List<Map<String, dynamic>> allTimeCategories = <Map<String, dynamic>>[];
+  final List<Color> sectionColors = <Color>[
+    Colors.lightBlue, Colors.deepPurpleAccent,
+    Colors.purple, Colors.blueGrey
   ];
+
+  bool isIphoneSeDevice = DeviceConfig().isIphoneSE;
+
+
+  Future<void> _loadWalletExpenses() async {
+    final Map<String, dynamic> result = await expenseService.getCategoriesByTotal();
+    setState(() {
+      allTimeCategories = result['categories'];
+    });
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    _loadWalletExpenses();
+  }
+
 
   @override
   Widget build(BuildContext context) {
+
+    Size screen = MediaQuery.of(context).size;
+
+    if (allTimeCategories.isEmpty) {
+      return Center(
+        child: Text(
+          'No data available',
+          style: TextStyle(fontSize: 26, color: Colors.black),
+        ),
+      );
+    }
 
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 60),
+            SizedBox(height: isIphoneSeDevice ? 30 : 60),
             Text('Statistics', style: TextStyle(fontSize: 18, color: Color(0XFF222222), fontWeight: FontWeight.w700)),
 
             SizedBox(height: 26),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  decoration: BoxDecoration(
-                    color: Color(0XFF438883),
-                    borderRadius: BorderRadius.circular(10)
-                  ),
-                  child: Center(child: Text('Day', style: TextStyle(fontSize: 13, color: Colors.white))),
-                ),
-      
+
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                   decoration: BoxDecoration(
@@ -58,219 +83,95 @@ class _StatisticScreenState extends State<StatisticScreen> {
                   ),
                   child: Center(child: Text('Week', style: TextStyle(fontSize: 13, color: Color(0xFF666666))))
                 ),
-      
+
                 Container(
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                     decoration: BoxDecoration(
                         color: Colors.transparent,
+                        //color: Color(0XFF438883),
                         borderRadius: BorderRadius.circular(10)
                     ),
-                    child: Center(child: Text('Month', style: TextStyle(fontSize: 13, color: Color(0xFF666666))))
+                    child: Center(child: Text('Month', style: TextStyle(fontSize: 13 )))
                 ),
-      
+
                 Container(
                     padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                     decoration: BoxDecoration(
                         color: Colors.transparent,
                         borderRadius: BorderRadius.circular(10)
                     ),
-                    child: Center(child: Text('Year', style: TextStyle(fontSize: 13, color: Color(0xFF666666))))
+                    child: Center(child: Text('Year', style: TextStyle(fontSize: 13,)))
+                ),
+
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  decoration: BoxDecoration(
+                      color: Color(0XFF438883),
+                      //color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: Center(child: Text('All Time', style: TextStyle(fontSize: 13, color: Colors.white))),
                 ),
               ],
             ),
-            SizedBox(height: 26),
-      
-            Stack(
-                children: <Widget>[
-                  AspectRatio(
-                      aspectRatio: 1.70,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 24, bottom: 12,),
-                        child: LineChart(
-                          mainData(),
-                        ),
-                      )
-                  ),
-                ]
-            ),
-            SizedBox(height: 30),
-      
-            Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text('Top Spend Category', style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold)),
-                    Icon(Icons.swap_vert,color: Color(0XFF666666))
-                  ],
-                ),
-                SizedBox(height: 25),
-                SizedBox(
-                  height: 250,
-                  child: ListView.builder(
-                    itemCount: 14,
-                    padding: EdgeInsets.zero,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        margin: EdgeInsets.symmetric(vertical: 5),
-                        child: Row(
-                          children: <Widget>[
-                            Container(
-                              width: 50, height: 50,
-                              decoration: BoxDecoration(
-                                  color: Color(0XFF29756F),
-                                  borderRadius: BorderRadius.circular(8)
-                              ),
-                            ),
-                            SizedBox(width: 8),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text('Food', style: TextStyle(color: Colors.black, fontSize: 16)),
-                              ],
-                            ),
-                            Spacer(),
-                            Text('R 1 370.65', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Color(0xFF25A969)),),
-                          ],
-                        ),
+            SizedBox(height: 76),
+
+
+            SizedBox(
+              height: 220, width: screen.width,
+              child: PieChart(
+                PieChartData(
+                  sections: List.generate(
+                      allTimeCategories.length > 4 ?
+                      4 : allTimeCategories.length,
+                        (int index) {
+                        final Map<String, dynamic> item = allTimeCategories[index];
+                        return PieChartSectionData(
+                          radius: touchedIndex == index ? 60 : 50,
+                          color: sectionColors[index],
+                          //title: item['categoryName'],
+                          value: item['total'] as double,
+                          titleStyle: const TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w800),
                       );
                     },
                   ),
+                  pieTouchData: PieTouchData(
+                    touchCallback: (FlTouchEvent event, PieTouchResponse? response) {
+                      if (response != null && response.touchedSection != null) {
+                        setState(() {
+                          touchedIndex = response.touchedSection!.touchedSectionIndex;
+                        });
+                      }
+                    },
+                  ),
+                  centerSpaceRadius: 100,
+                  centerSpaceColor: Colors.black12,
                 ),
-              ],
-            )
+              ),
+            ),
+            SizedBox(height: 70),
+
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List.generate(
+                allTimeCategories.length > 4 ? 4 : allTimeCategories.length,
+                    (int index) {
+                  final Map<String, dynamic> item = allTimeCategories[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 5),
+                    child: Indicator(
+                      color: sectionColors[index % sectionColors.length],
+                      text: item['categoryName'],
+                      isSquare: true,
+                    ),
+                  );
+                },
+              ),
+            ),
           ]
         ),
       ),
-    );
-  }
-
-  Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const TextStyle style = TextStyle(fontWeight: FontWeight.bold, fontSize: 16,);
-
-    Widget text;
-
-    switch (value.toInt()) {
-      case 2:
-        text = const Text('May', style: style);
-        break;
-      case 5:
-        text = const Text('June', style: style);
-        break;
-      case 8:
-        text = const Text('July', style: style);
-        break;
-      default:
-        text = const Text('', style: style);
-        break;
-    }
-
-    return SideTitleWidget(
-      meta: meta,
-      child: text,
-    );
-  }
-
-  Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const TextStyle style = TextStyle(fontWeight: FontWeight.bold, fontSize: 15);
-
-    String text;
-    switch (value.toInt()) {
-      case 1:
-        text = '10K';
-        break;
-      case 3:
-        text = '30k';
-        break;
-      case 5:
-        text = '50k';
-        break;
-      default:
-        return Container();
-    }
-
-    return Text(text, style: style, textAlign: TextAlign.left);
-  }
-
-
-  ///////
-  LineChartData mainData() {
-    return LineChartData(
-      gridData: FlGridData(
-        //show: true,
-        verticalInterval: 1,
-        horizontalInterval: 1,
-        //drawVerticalLine: true,
-        getDrawingHorizontalLine: (double value) {
-          return const FlLine(
-            color: Colors.white10,
-            strokeWidth: 1,
-          );
-        },
-        getDrawingVerticalLine: (double value) {
-          return const FlLine(
-            color: Colors.white10,
-            strokeWidth: 1,
-          );
-        },
-      ),
-      titlesData: FlTitlesData(
-        //show: true,
-        //rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-        //topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-        bottomTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: true,
-            reservedSize: 30,
-            interval: 1,
-            getTitlesWidget: bottomTitleWidgets,
-          ),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: SideTitles(
-            showTitles: false,
-            interval: 1,
-            getTitlesWidget: leftTitleWidgets,
-            reservedSize: 42,
-          ),
-        ),
-      ),
-      borderData: FlBorderData(
-        show: false,
-        border: Border.all(color: const Color(0xff37434d),width: 3),
-      ),
-      minX: 0,
-      maxX: 11,
-      minY: 0,
-      maxY: 6,
-      lineBarsData: <LineChartBarData>[
-        LineChartBarData(
-          spots: const <FlSpot>[
-            FlSpot(0, 3),
-            FlSpot(2.6, 2),
-            FlSpot(4.9, 5),
-            FlSpot(6.8, 3.1),
-            FlSpot(8, 4),
-            FlSpot(9.5, 3),
-            FlSpot(11, 4),
-          ],
-          isCurved: true,
-          gradient: LinearGradient(
-            colors: gradientColors,
-          ),
-          barWidth: 5,
-          isStrokeCapRound: true,
-          dotData: const FlDotData(show: false,),
-          belowBarData: BarAreaData(
-            show: true,
-            gradient: LinearGradient(
-              colors: gradientColors
-                  .map((color) => color.withValues(alpha: 0.3))
-                  .toList(),
-            ),
-          ),
-        ),
-      ],
     );
   }
 

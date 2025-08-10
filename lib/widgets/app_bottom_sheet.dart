@@ -124,7 +124,7 @@ class _ExpenseBottomSheetState extends State<ExpenseBottomSheet> {
                         isExpanded: true,
                         hint: Text('Select a category', style: TextStyle(fontWeight: FontWeight.w400)),
                         underline: Container(),
-                        items: widget.itemListApi.map((e) {
+                        items: widget.itemListApi.map((dynamic e) {
                           return DropdownMenuItem<String>(
                             value: e['id'].toString(),
                             child: Text(e['description'], style: TextStyle(fontSize: 15)),

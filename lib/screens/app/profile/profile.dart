@@ -9,7 +9,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/utils/utils.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:expense_tracker/screens/app/app.dart';
 
 class ProfileScreen extends StatefulWidget {
 
@@ -55,31 +55,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                   // Avatar overlapping
                   Positioned(
-                  bottom: isIphoneSeDevice ? -40 : -20, left: 0, right: 0,
-                  child: CircleAvatar(
-                    radius: 50, backgroundColor: Colors.white,
+                    bottom: isIphoneSeDevice ? -40 : -20, left: 0, right: 0,
                     child: CircleAvatar(
-                      radius: 46,
-                      backgroundColor: Colors.transparent,
-                      child: ClipOval(
-                        child: CachedNetworkImage(
-                          imageUrl: 'https://media.licdn.com/dms/image/v2/C560BAQEyd84_pj-sUg/company-logo_200_200/company-logo_200_200/0/1646993302092?e=1756944000&v=beta&t=Ik_ojgQ8Z7AfKyUs5GtwqmUn7Bo5LVDu4HdIqvdKy8k',
-                          fit: BoxFit.cover,
-                          placeholder: (BuildContext context, String url) => CircularProgressIndicator(),
-                          errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error),
+                      radius: 50, backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 46,
+                        backgroundColor: Colors.transparent,
+                        child: ClipOval(
+                          child: Image.asset(
+                            'assets/images/aceMedia.jpeg',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ]
-          ),
-          SizedBox(height: 40),
+                ]
+            ),
+            SizedBox(height: 40),
 
           Center(
             child: Column(
               children: <Widget>[
-                Text('Ace Media', style: TextStyle(fontSize: 20, color: Color(0XFF222222))),
+                Text('AceMedia', style: TextStyle(fontSize: 20, color: Color(0XFF222222))),
                 Text('hello@acemedia.co.za', style: TextStyle(fontSize: 14, color: Color(0XFF438883))),
               ],
             ),
@@ -93,6 +91,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               children: <Widget>[
                 ListTile(
                   dense: true,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (BuildContext context) => const AccountInfoScreen()),
+                    );
+                  },
                   leading: Icon(Icons.person),
                   title: Text('Account info', style: TextStyle(fontSize: 16,color: Color(0XFF000000)),),
                   trailing: Icon(Icons.arrow_forward_ios, size: 20, color: Colors.blue),
@@ -103,7 +107,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   leading: Icon(Icons.group),
                   title: Text('Personal profile', style: TextStyle(fontSize: 16,color: Color(0XFF000000)),),
                   trailing: Icon(Icons.arrow_forward_ios, size: 20, color: Colors.blue),
-                ),*/
+                ),
 
                 ListTile(
                   dense: true,
@@ -125,6 +129,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   title: Text('Data and privacy', style: TextStyle(fontSize: 16,color: Color(0XFF000000)),),
                   trailing: Icon(Icons.arrow_forward_ios, size: 20, color: Colors.blue),
                 ),
+                */
               ],
             ),
           )

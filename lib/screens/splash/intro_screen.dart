@@ -8,7 +8,9 @@
  */
 
 import 'dart:async';
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
+import 'package:expense_tracker/utils/utils.dart';
 import 'package:expense_tracker/screens/app/index.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -21,6 +23,7 @@ class IntroScreen extends StatefulWidget {
 
 class _IntroScreenState extends State<IntroScreen> {
   int currentPage = 0;
+  bool isIphoneSeDevice = DeviceConfig().isIphoneSE;
   final PageController _controller = PageController();
 
 
@@ -65,10 +68,24 @@ class _IntroScreenState extends State<IntroScreen> {
                       )
                   ),
                   child: Center(
-                      child: Text(
-                          'mono',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 50, fontWeight: FontWeight.w800)
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                              'Moola Mate',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w800)
+                          ),
+                          SizedBox(height: 20),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                            child: Text(
+                                'Because you wanna keep your bucks in check',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w300, fontStyle: FontStyle.italic)
+                            ),
+                          ),
+                        ],
                       )
                   ),
                 ),
@@ -79,43 +96,24 @@ class _IntroScreenState extends State<IntroScreen> {
                     Container(
                       height: screen.height * 0.7, width: screen.width,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('assets/images/background.png'),
-                        ),
+                        //image: DecorationImage(fit: BoxFit.cover, image: AssetImage('assets/images/background.png')),
                       ),
-                      child: Stack(
-                        children: <Widget>[
-                          Positioned(
-                              top: 120, left: 48,
-                              child: Image.asset('assets/images/coin.png')
-                          ),
-
-                          Positioned(
-                            right: 30, top: screen.height * 0.2,
-                              child: Image.asset('assets/images/donut.png')
-                          ),
-                          Positioned(
-                            top: 120,
-                            child: Image.asset(
-                              //width: screen.width, height: 300,
-                              'assets/images/moneyman.png',
-                            ),
-                          ),
-                        ],
-                      ),
+                      child: Lottie.network(
+                          'https://lottie.host/3f9ea5d2-d9c6-4006-8a99-dfe0f6e609b1/A3hptcu2Ka.json'),
                     ),
 
                     SizedBox(
                       width: screen.width, height: screen.height * 0.3,
                       child: Column(
                         children: <Widget>[
+                          //SizedBox(height: 20),
                           Text(
                               textAlign: TextAlign.center,
-                              'Spend Smarter\nSave More',
-                              style: TextStyle(color: Color(0xFF438883), fontSize: 36, fontWeight: FontWeight.bold)
+                              'Monitor Your Spend\nSave a Buck',
+                              style: TextStyle(color: Color(0xFF438883), fontSize: isIphoneSeDevice ? 26 : 36, fontWeight: FontWeight.bold)
                           ),
-                          SizedBox(height: 20),
+
+                          Spacer(),
 
                           GestureDetector(
                             onTap: () {
@@ -130,15 +128,17 @@ class _IntroScreenState extends State<IntroScreen> {
                                     end: Alignment.bottomCenter,
                                     colors: <Color>[Color(0xFF63B5AF), Color(0xFF438883)]
                                 ),
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                    offset: Offset(0, 10),
-                                    color: Color(0XFF3E7C78),
-                                    spreadRadius: 3, blurRadius: 24,
-                                  )
-                                ],
+                                  boxShadow: isIphoneSeDevice
+                                      ? <BoxShadow>[]
+                                      : const <BoxShadow>[
+                                        BoxShadow(
+                                          offset: Offset(0, 5),
+                                          color: Color(0xFF3E7C78),
+                                          spreadRadius: 1, blurRadius: 10,
+                                        ),
+                                  ],
                               ),
-                              height: 67, width: screen.width * 0.7,
+                              height: isIphoneSeDevice ? 47 : 67, width: screen.width * 0.7,
                               padding: EdgeInsets.symmetric(horizontal: 16),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -152,11 +152,7 @@ class _IntroScreenState extends State<IntroScreen> {
                             ),
                           ),
                           Spacer(),
-                          Text(
-                            'Already have account? Log In',
-                            style: TextStyle(fontSize: 14, color: Color(0xFF444444),),
-                          ),
-                          Spacer()
+
                         ],
                       ),
                     )

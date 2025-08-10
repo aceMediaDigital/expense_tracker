@@ -11,12 +11,21 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/utils/utils.dart';
 import 'package:expense_tracker/screens/screens.dart';
+import 'package:expense_tracker/services/services.dart';
+
 
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
 
   await DeviceConfig().init();
+
+  final LocalNotificationService notificationService = LocalNotificationService();
+
+  await notificationService.initNotification();
+  await notificationService.scheduleEveningReminders();
+
+  await notificationService.requestPermissions();
 
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   SystemChrome.setPreferredOrientations(<DeviceOrientation>[
@@ -33,7 +42,7 @@ class ExpenseTrackerApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Expense Tracker',
+      title: 'Moola Mate',
       theme: ThemeData(
         useMaterial3: false,
         fontFamily: 'Inter',
