@@ -8,7 +8,7 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/widgets/widgets.dart';
+import 'package:moola_mate/widgets/widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountInfoScreen extends StatefulWidget {

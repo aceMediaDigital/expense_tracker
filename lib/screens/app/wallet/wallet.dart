@@ -10,10 +10,10 @@
 import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/utils/utils.dart';
-import 'package:expense_tracker/widgets/widgets.dart';
+import 'package:moola_mate/utils/utils.dart';
+import 'package:moola_mate/widgets/widgets.dart';
+import 'package:moola_mate/services/services.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:expense_tracker/services/services.dart';
 
 class WalletScreen extends StatefulWidget {
 

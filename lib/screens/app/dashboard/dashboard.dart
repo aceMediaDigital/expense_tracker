@@ -10,11 +10,11 @@
 import 'dart:convert';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/utils/utils.dart';
+import 'package:moola_mate/utils/utils.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:expense_tracker/services/services.dart';
+import 'package:moola_mate/services/services.dart';
+import 'package:moola_mate/widgets/app_bottom_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:expense_tracker/widgets/app_bottom_sheet.dart';
 
 
 class DashboardScreen extends StatefulWidget {

@@ -10,7 +10,7 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/widgets/widgets.dart';
+import 'package:moola_mate/widgets/widgets.dart';
 
 
 class ExpenseBottomSheet extends StatefulWidget {
