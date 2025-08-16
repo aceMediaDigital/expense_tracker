@@ -9,9 +9,9 @@
 
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/utils/utils.dart';
-import 'package:expense_tracker/screens/screens.dart';
-import 'package:expense_tracker/services/services.dart';
+import 'package:moola_mate/utils/utils.dart';
+import 'package:moola_mate/screens/screens.dart';
+import 'package:moola_mate/services/services.dart';
 
 
 void main() async {

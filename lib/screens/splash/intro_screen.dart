@@ -10,8 +10,8 @@
 import 'dart:async';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/utils/utils.dart';
-import 'package:expense_tracker/screens/app/index.dart';
+import 'package:moola_mate/utils/utils.dart';
+import 'package:moola_mate/screens/app/index.dart';
 
 class IntroScreen extends StatefulWidget {
 

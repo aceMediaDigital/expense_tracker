@@ -9,8 +9,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:expense_tracker/utils/utils.dart';
-import 'package:expense_tracker/services/services.dart';
+import 'package:moola_mate/utils/utils.dart';
+import 'package:moola_mate/services/services.dart';
 
 class StatisticScreen extends StatefulWidget {
 
@@ -22,6 +22,7 @@ class StatisticScreen extends StatefulWidget {
 
 class _StatisticScreenState extends State<StatisticScreen> {
   int touchedIndex = 0;
+  bool isIphoneSeDevice = DeviceConfig().isIphoneSE;
 
   final ExpenseAppService expenseService = ExpenseAppService();
   List<Map<String, dynamic>> allTimeCategories = <Map<String, dynamic>>[];
@@ -29,8 +30,6 @@ class _StatisticScreenState extends State<StatisticScreen> {
     Colors.lightBlue, Colors.deepPurpleAccent,
     Colors.purple, Colors.blueGrey
   ];
-
-  bool isIphoneSeDevice = DeviceConfig().isIphoneSE;
 
 
   Future<void> _loadWalletExpenses() async {

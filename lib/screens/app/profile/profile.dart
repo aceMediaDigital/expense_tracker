@@ -8,8 +8,8 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:expense_tracker/utils/utils.dart';
-import 'package:expense_tracker/screens/app/app.dart';
+import 'package:moola_mate/utils/utils.dart';
+import 'package:moola_mate/screens/app/app.dart';
 
 class ProfileScreen extends StatefulWidget {
 

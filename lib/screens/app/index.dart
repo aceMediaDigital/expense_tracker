@@ -9,8 +9,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:expense_tracker/screens/app/app.dart';
-import 'package:expense_tracker/services/services.dart';
+import 'package:moola_mate/screens/app/app.dart';
+import 'package:moola_mate/services/services.dart';
 
 class AppIndexScreen extends StatefulWidget {
 

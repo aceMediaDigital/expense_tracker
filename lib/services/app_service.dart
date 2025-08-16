@@ -8,7 +8,7 @@
  */
 
 import 'package:intl/intl.dart';
-import 'package:expense_tracker/services/services.dart';
+import 'package:moola_mate/services/services.dart';
 
 class ExpenseAppService {
 
