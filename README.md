@@ -2,6 +2,10 @@
 
 A simple and intuitive expense tracker app to help you manage your finances, track spending, and stay on top of your financial goals.
 
+![](https://img.shields.io/badge/Made_with-Flutter-20232A?style=for-the-badge&logo=flutter&logoColor=61DAFB)
+![](https://img.shields.io/badge/IDE-Visual_Studio_Code-blue?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
+
+
 ## 🚀 Features
 
 - 💸 Add and categorize expenses easily
