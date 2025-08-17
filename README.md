@@ -16,6 +16,11 @@ A simple and intuitive expense tracker app to help you manage your finances, tra
 
 ![Sonny and Mariel high fiving.](https://github.com/aceMediaDigital/expense_tracker/blob/main/cover.png)
 
+| Intro Screen                                                                       | Transactions                                                                       |
+|------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| ![](https://github.com/aceMediaDigital/expense_tracker/blob/main/intro-screen.png) | ![](https://github.com/aceMediaDigital/expense_tracker/blob/main/transactions.png) |
+
+
 ## 🛠️ Tech Stack
 
 - **Frontend:** Flutter
