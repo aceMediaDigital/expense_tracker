@@ -52,14 +52,10 @@ class _StatisticScreenState extends State<StatisticScreen> {
 
     Size screen = MediaQuery.of(context).size;
 
-    if (allTimeCategories.isEmpty) {
-      return Center(
-        child: Text(
-          'No data available',
-          style: TextStyle(fontSize: 26, color: Colors.black),
-        ),
-      );
-    }
+    // if (allTimeCategories.isEmpty) {
+    //   return Center(
+    //     child: Text('No data available', style: TextStyle(fontSize: 26, color: Colors.black)));
+    // }
 
     return SingleChildScrollView(
       child: Padding(
@@ -114,6 +110,15 @@ class _StatisticScreenState extends State<StatisticScreen> {
               ],
             ),
             SizedBox(height: 76),
+
+
+            if (allTimeCategories.isEmpty)
+              Center(
+                child: Text(
+                  textAlign: TextAlign.center,
+                    'No data available\n Start adding expenses', style: TextStyle(fontSize: 26, color: Colors.black)
+                )
+              ),
 
 
             SizedBox(

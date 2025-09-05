@@ -98,8 +98,8 @@ class _IntroScreenState extends State<IntroScreen> {
                       decoration: BoxDecoration(
                         //image: DecorationImage(fit: BoxFit.cover, image: AssetImage('assets/images/background.png')),
                       ),
-                      child: Lottie.network(
-                          'https://lottie.host/3f9ea5d2-d9c6-4006-8a99-dfe0f6e609b1/A3hptcu2Ka.json'),
+                      child: Lottie.asset(
+                          'assets/images/icons/LottieAnim.json'),
                     ),
 
                     SizedBox(
