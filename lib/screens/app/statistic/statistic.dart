@@ -63,7 +63,7 @@ class _StatisticScreenState extends State<StatisticScreen> {
         child: Column(
           children: <Widget>[
             SizedBox(height: isIphoneSeDevice ? 30 : 60),
-            Text('Statistics', style: TextStyle(fontSize: 18, color: Color(0XFF222222), fontWeight: FontWeight.w700)),
+            Text('Spend Stats', style: TextStyle(fontSize: 18, color: Color(0XFF222222), fontWeight: FontWeight.w700)),
 
             SizedBox(height: 26),
             Row(

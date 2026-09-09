@@ -109,7 +109,7 @@ class LocalNotificationService {
       body,
       scheduledDate,
       notificationDetails(),
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time, // Repeat daily
     );
@@ -164,7 +164,7 @@ class LocalNotificationService {
       /// Make notification repeat daily
       matchDateTimeComponents: DateTimeComponents.time,
 
-      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
 
       /// IOS Specific
       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
