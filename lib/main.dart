@@ -20,18 +20,20 @@ void main() async {
 
   await DeviceConfig().init();
 
-  final LocalNotificationService notificationService = LocalNotificationService();
-
-  await notificationService.initNotification();
-  await notificationService.scheduleEveningReminders();
-
-  await notificationService.requestPermissions();
-
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-  SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+  await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
-  ]).then((dynamic value) => runApp( const ExpenseTrackerApp() ));
+  ]);
+
+  runApp(const ExpenseTrackerApp());
+
+  // Runs after the first frame is drawn so the Android notification
+  // permission prompt can't block the app from ever opening.
+  final LocalNotificationService notificationService = LocalNotificationService();
+  await notificationService.initNotification();
+  await notificationService.scheduleEveningReminders();
+  await notificationService.requestPermissions();
 }
 
 class ExpenseTrackerApp extends StatelessWidget {
